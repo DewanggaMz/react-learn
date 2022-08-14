@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { useState, useEffect } from "react";
 import './App.css';
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('dewangga');
+
+  useEffect(() => {
+    const judul = document.getElementById('judul');
+    setTimeout(() => {
+      judul.textContent = 'haloo';
+    },2000)
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 id="judul">{name}</h1>
+      <button onClick={() => setCount(count - 1)}>-</button>
+      <h2>{ count }</h2>
+      <button onClick={() => setCount(count + 1)}>+</button>
+
+      <button onClick={() => name === 'dewangga' ? setName('mahfuz') : setName('dewangga')}>set name</button>
     </div>
   );
 }
